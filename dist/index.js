@@ -6,6 +6,7 @@ var freeSolidSvgIcons = require('@fortawesome/free-solid-svg-icons');
 var classnames = require('classnames');
 var reactFontawesome = require('@fortawesome/react-fontawesome');
 var Select = require('react-select');
+var material = require('@mui/material');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -75,7 +76,7 @@ function _toPropertyKey(arg) {
   return typeof key === "symbol" ? key : String(key);
 }
 
-var useStyles$c = reactJss.createUseStyles({
+var useStyles$b = reactJss.createUseStyles({
   checkbox: {
     '& *': {
       display: 'inline-block'
@@ -103,7 +104,7 @@ var FBCheckbox = function FBCheckbox(_ref) {
     dataTest = _ref$dataTest === void 0 ? '' : _ref$dataTest,
     _ref$labelClassName = _ref.labelClassName,
     labelClassName = _ref$labelClassName === void 0 ? '' : _ref$labelClassName;
-  var classjss = useStyles$c();
+  var classjss = useStyles$b();
   var classes = classnames__default["default"]('fb-checkbox', {
     'edit-checkbox': !disabled && use === 'edit',
     'action-checkbox': !disabled && use === 'action',
@@ -145,7 +146,7 @@ var FontAwesomeIcon = function FontAwesomeIcon(_ref) {
   return /*#__PURE__*/React__default["default"].createElement(reactFontawesome.FontAwesomeIcon, _objectSpread2({}, props));
 };
 
-var useStyles$b = reactJss.createUseStyles({
+var useStyles$a = reactJss.createUseStyles({
   collapseElement: {
     '& .disabled': {
       '.toggle-collapse': {
@@ -167,7 +168,7 @@ var useStyles$b = reactJss.createUseStyles({
   }
 });
 var Collapse = function Collapse(props) {
-  var classes = classnames__default["default"]("collapse-element " + (props.className || '') + " " + useStyles$b().collapseElement, {
+  var classes = classnames__default["default"]("collapse-element " + (props.className || '') + " " + useStyles$a().collapseElement, {
     disabled: props.disableToggle
   });
   return /*#__PURE__*/React__default["default"].createElement("div", {
@@ -222,7 +223,7 @@ function FBRadioButton(props) {
   }, label));
 }
 
-var useStyles$a = reactJss.createUseStyles({
+var useStyles$9 = reactJss.createUseStyles({
   radio: {
     '& .fb-radio-button': {
       display: 'block',
@@ -249,7 +250,7 @@ function FBRadioGroup(props) {
     autoFocus = props.autoFocus,
     disabled = props.disabled;
   var name = Math.random().toString();
-  var classjss = useStyles$a();
+  var classjss = useStyles$9();
   var classes = classnames__default["default"]('fb-radio-group', {
     horizontal: horizontal
   });
@@ -282,7 +283,7 @@ var typeMap = {
   alert: freeSolidSvgIcons.faAsterisk,
   help: freeSolidSvgIcons.faQuestionCircle
 };
-var useStyles$9 = reactJss.createUseStyles({
+var useStyles$8 = reactJss.createUseStyles({
   toolTip: {
     color: 'white',
     'background-color': 'black'
@@ -292,7 +293,7 @@ function Example(_ref) {
   var text = _ref.text,
     type = _ref.type,
     id = _ref.id;
-  var classes = useStyles$9();
+  var classes = useStyles$8();
   return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("span", {
     style: {
       textDecoration: 'underline',
@@ -1596,7 +1597,7 @@ function CardSelector(_ref) {
   }));
 }
 
-var useStyles$8 = reactJss.createUseStyles({
+var useStyles$7 = reactJss.createUseStyles({
   cardEnumOption: {
     width: '100%',
     display: 'flex',
@@ -1621,7 +1622,7 @@ function CardEnumOptions(_ref) {
     showNames = _ref.showNames,
     _onChange = _ref.onChange,
     type = _ref.type;
-  var classes = useStyles$8();
+  var classes = useStyles$7();
   var possibleValues = [];
   var _loop = function _loop(index) {
     var value = initialValues[index];
@@ -1962,7 +1963,7 @@ function DependencyPossibility(_ref) {
   }));
 }
 
-var useStyles$7 = reactJss.createUseStyles({
+var useStyles$6 = reactJss.createUseStyles({
   dependencyField: {
     '& .fa': {
       cursor: 'pointer'
@@ -2019,7 +2020,7 @@ function DependencyField(_ref) {
     _onChange = _ref.onChange;
   var _useState = React.useState(getRandomId()),
     elementId = _useState[0];
-  var classes = useStyles$7();
+  var classes = useStyles$6();
   var valueBased = checkIfValueBasedDependency(parameters.dependents || []);
   return /*#__PURE__*/React__default["default"].createElement("div", {
     className: "form-dependency " + classes.dependencyField
@@ -2115,7 +2116,7 @@ function DependencyField(_ref) {
   }, "Add another dependency relation linking this element and other form elements")));
 }
 
-var useStyles$6 = reactJss.createUseStyles({
+var useStyles$5 = reactJss.createUseStyles({
   cardModal: {
     '& .card-modal-header': {
       paddingTop: '.5em',
@@ -2167,7 +2168,7 @@ var CardModal = function CardModal(_ref) {
     isOpen = _ref.isOpen,
     onClose = _ref.onClose,
     TypeSpecificParameters = _ref.TypeSpecificParameters;
-  var classes = useStyles$6();
+  var classes = useStyles$5();
   // assign state values for parameters that should only change on hitting "Save"
   var _useState = React.useState(componentProps),
     componentPropsState = _useState[0],
@@ -2410,89 +2411,68 @@ function CardGeneralParameterInputs(_ref) {
   })));
 }
 
-var useStyles$5 = reactJss.createUseStyles({
-  addDetails: {
-    '& .popover': {
-      width: '300px',
-      'z-index': '1051 !important',
-      '& .popover-inner': {
-        border: '1px solid #1d71ad',
-        borderRadius: '4px',
-        '& .popover-header': {
-          borderBottom: '1px solid #1d71ad'
-        },
-        '& .action-buttons': {
-          display: 'flex',
-          justifyContent: 'space-between',
-          marginTop: '.5em'
-        }
-      }
-    }
-  }
-});
 function Add(_ref) {
   var _labels$addElementLab, _labels$addSectionLab;
   var addElem = _ref.addElem,
     hidden = _ref.hidden,
     tooltipDescription = _ref.tooltipDescription,
     labels = _ref.labels;
-  var classes = useStyles$5();
-  var _useState = React.useState(false),
-    popoverOpen = _useState[0],
-    setPopoverOpen = _useState[1];
+  var _useState = React.useState(null),
+    anchorEl = _useState[0],
+    setAnchorEl = _useState[1];
   var _useState2 = React.useState('card'),
     createChoice = _useState2[0],
     setCreateChoice = _useState2[1];
-  var _useState3 = React.useState(getRandomId()),
-    elementId = _useState3[0];
+  React.useState(getRandomId());
+  var handleOpen = function handleOpen(event) {
+    setAnchorEl(event.currentTarget);
+  };
+  var handleClose = function handleClose() {
+    setAnchorEl(null);
+  };
   return /*#__PURE__*/React__default["default"].createElement("div", {
     style: {
       display: hidden ? 'none' : 'initial'
     }
-  }, /*#__PURE__*/React__default["default"].createElement("span", {
-    id: elementId + "_add"
-  }, /*#__PURE__*/React__default["default"].createElement(FontAwesomeIcon, {
-    icon: freeSolidSvgIcons.faPlusSquare,
-    onClick: function onClick() {
-      return setPopoverOpen(true);
+  }, /*#__PURE__*/React__default["default"].createElement(material.Tooltip, {
+    title: tooltipDescription || 'Create new form element',
+    placement: 'top'
+  }, /*#__PURE__*/React__default["default"].createElement(material.Button, {
+    onClick: handleOpen,
+    variant: 'outlined',
+    color: 'primary'
+  }, "Add new form element")), /*#__PURE__*/React__default["default"].createElement(material.Popover, {
+    open: Boolean(anchorEl),
+    anchorEl: anchorEl,
+    onClose: handleClose
+  }, /*#__PURE__*/React__default["default"].createElement(material.Typography, {
+    variant: 'h6',
+    style: {
+      padding: '8px 16px'
     }
-  })), /*#__PURE__*/React__default["default"].createElement(reactstrap.UncontrolledTooltip, {
-    placement: 'top',
-    target: elementId + "_add"
-  }, tooltipDescription || 'Create new form element'), /*#__PURE__*/React__default["default"].createElement(reactstrap.Popover, {
-    placement: 'bottom',
-    target: elementId + "_add",
-    isOpen: popoverOpen,
-    toggle: function toggle() {
-      return setPopoverOpen(false);
-    },
-    className: "add-details " + classes.addDetails,
-    id: elementId + "_add_popover"
-  }, /*#__PURE__*/React__default["default"].createElement(reactstrap.PopoverHeader, null, "Create New"), /*#__PURE__*/React__default["default"].createElement(reactstrap.PopoverBody, null, /*#__PURE__*/React__default["default"].createElement(FBRadioGroup, {
-    className: 'choose-create',
-    defaultValue: createChoice,
-    horizontal: false,
-    options: [{
-      value: 'card',
-      label: (_labels$addElementLab = labels == null ? void 0 : labels.addElementLabel) != null ? _labels$addElementLab : 'Form element'
-    }, {
-      value: 'section',
-      label: (_labels$addSectionLab = labels == null ? void 0 : labels.addSectionLabel) != null ? _labels$addSectionLab : 'Form section'
-    }],
-    onChange: function onChange(selection) {
-      setCreateChoice(selection);
+  }, "Create New"), /*#__PURE__*/React__default["default"].createElement("div", {
+    style: {
+      padding: 16
     }
-  }), /*#__PURE__*/React__default["default"].createElement("div", {
-    className: 'action-buttons'
-  }, /*#__PURE__*/React__default["default"].createElement(reactstrap.Button, {
-    onClick: function onClick() {
-      return setPopoverOpen(false);
-    },
-    color: 'secondary'
-  }, "Cancel"), /*#__PURE__*/React__default["default"].createElement(reactstrap.Button, {
+  }, /*#__PURE__*/React__default["default"].createElement(material.RadioGroup, {
+    value: createChoice,
+    onChange: function onChange(event) {
+      return setCreateChoice(event.target.value);
+    }
+  }, /*#__PURE__*/React__default["default"].createElement(material.FormControlLabel, {
+    value: 'card',
+    control: /*#__PURE__*/React__default["default"].createElement(material.Radio, null),
+    label: (_labels$addElementLab = labels == null ? void 0 : labels.addElementLabel) != null ? _labels$addElementLab : 'Form element'
+  }), /*#__PURE__*/React__default["default"].createElement(material.FormControlLabel, {
+    value: 'section',
+    control: /*#__PURE__*/React__default["default"].createElement(material.Radio, null),
+    label: (_labels$addSectionLab = labels == null ? void 0 : labels.addSectionLabel) != null ? _labels$addSectionLab : 'Form section'
+  })), /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement(material.Button, {
+    onClick: handleClose
+  }, "Cancel"), /*#__PURE__*/React__default["default"].createElement(material.Button, {
     onClick: function onClick() {
       addElem(createChoice);
-      setPopoverOpen(false);
+      handleClose();
     },
     color: 'primary'
   }, "Create")))));

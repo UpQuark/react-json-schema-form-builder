@@ -1,36 +1,15 @@
-import React, { useState, ReactElement } from 'react';
+import React, { useState } from 'react';
 import {
   Popover,
-  PopoverHeader,
-  PopoverBody,
-  UncontrolledTooltip,
   Button,
-} from 'reactstrap';
-import { createUseStyles } from 'react-jss';
-import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
-import FontAwesomeIcon from './FontAwesomeIcon';
-import FBRadioGroup from './radio/FBRadioGroup';
+  Tooltip,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
+  Typography,
+} from '@mui/material';
 import { getRandomId } from './utils';
 import type { ModLabels } from './types';
-
-const useStyles = createUseStyles({
-  addDetails: {
-    '& .popover': {
-      width: '300px',
-      'z-index': '1051 !important',
-      '& .popover-inner': {
-        border: '1px solid #1d71ad',
-        borderRadius: '4px',
-        '& .popover-header': { borderBottom: '1px solid #1d71ad' },
-        '& .action-buttons': {
-          display: 'flex',
-          justifyContent: 'space-between',
-          marginTop: '.5em',
-        },
-      },
-    },
-  },
-});
 
 export default function Add({
   addElem,
@@ -42,66 +21,66 @@ export default function Add({
   hidden?: boolean;
   tooltipDescription?: string;
   labels?: ModLabels;
-}): ReactElement {
-  const classes = useStyles();
-  const [popoverOpen, setPopoverOpen] = useState(false);
+}) {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [createChoice, setCreateChoice] = useState('card');
   const [elementId] = useState(getRandomId());
 
+  const handleOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <div style={{ display: hidden ? 'none' : 'initial' }}>
-      <span id={`${elementId}_add`}>
-        <FontAwesomeIcon
-          icon={faPlusSquare}
-          onClick={() => setPopoverOpen(true)}
-        />
-      </span>
-      <UncontrolledTooltip placement='top' target={`${elementId}_add`}>
-        {tooltipDescription || 'Create new form element'}
-      </UncontrolledTooltip>
-      <Popover
-        placement='bottom'
-        target={`${elementId}_add`}
-        isOpen={popoverOpen}
-        toggle={() => setPopoverOpen(false)}
-        className={`add-details ${classes.addDetails}`}
-        id={`${elementId}_add_popover`}
+      <Tooltip
+        title={tooltipDescription || 'Create new form element'}
+        placement='top'
       >
-        <PopoverHeader>Create New</PopoverHeader>
-        <PopoverBody>
-          <FBRadioGroup
-            className='choose-create'
-            defaultValue={createChoice}
-            horizontal={false}
-            options={[
-              {
-                value: 'card',
-                label: labels?.addElementLabel ?? 'Form element',
-              },
-              {
-                value: 'section',
-                label: labels?.addSectionLabel ?? 'Form section',
-              },
-            ]}
-            onChange={(selection) => {
-              setCreateChoice(selection);
-            }}
-          />
-          <div className='action-buttons'>
-            <Button onClick={() => setPopoverOpen(false)} color='secondary'>
-              Cancel
-            </Button>
+        <Button onClick={handleOpen} variant={'outlined'} color={'primary'}>
+          Add new form element
+        </Button>
+      </Tooltip>
+      <Popover
+        open={Boolean(anchorEl)}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+      >
+        <Typography variant='h6' style={{ padding: '8px 16px' }}>
+          Create New
+        </Typography>
+        <div style={{ padding: 16 }}>
+          <RadioGroup
+            value={createChoice}
+            onChange={(event) => setCreateChoice(event.target.value)}
+          >
+            <FormControlLabel
+              value='card'
+              control={<Radio />}
+              label={labels?.addElementLabel ?? 'Form element'}
+            />
+            <FormControlLabel
+              value='section'
+              control={<Radio />}
+              label={labels?.addSectionLabel ?? 'Form section'}
+            />
+          </RadioGroup>
+          <div>
+            <Button onClick={handleClose}>Cancel</Button>
             <Button
               onClick={() => {
                 addElem(createChoice);
-                setPopoverOpen(false);
+                handleClose();
               }}
               color='primary'
             >
               Create
             </Button>
           </div>
-        </PopoverBody>
+        </div>
       </Popover>
     </div>
   );
