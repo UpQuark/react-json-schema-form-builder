@@ -275,7 +275,7 @@ export default function FormBuilder({
               mods.labels &&
               typeof mods.labels.formNameLabel === 'string'
                 ? mods.labels.formNameLabel
-                : 'Form Title'}
+                : 'Form Title1'}
             </h5>
             <Input
               value={schemaData.title || ''}

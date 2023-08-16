@@ -4267,7 +4267,7 @@ function FormBuilder(_ref) {
     "data-test": 'form-head'
   }, /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement("h5", {
     "data-test": 'form-name-label'
-  }, mods && mods.labels && typeof mods.labels.formNameLabel === 'string' ? mods.labels.formNameLabel : 'Form Title'), /*#__PURE__*/React__default["default"].createElement(reactstrap.Input, {
+  }, mods && mods.labels && typeof mods.labels.formNameLabel === 'string' ? mods.labels.formNameLabel : 'Form Title1'), /*#__PURE__*/React__default["default"].createElement(reactstrap.Input, {
     value: schemaData.title || '',
     placeholder: 'Title',
     type: 'text',
