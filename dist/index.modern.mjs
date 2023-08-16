@@ -2368,7 +2368,10 @@ function Add({
   }, "Add new form element")), /*#__PURE__*/React.createElement(Popover, {
     open: Boolean(anchorEl),
     anchorEl: anchorEl,
-    onClose: handleClose
+    onClose: handleClose,
+    sx: {
+      padding: 30
+    }
   }, /*#__PURE__*/React.createElement(Typography, {
     variant: 'h6',
     style: {

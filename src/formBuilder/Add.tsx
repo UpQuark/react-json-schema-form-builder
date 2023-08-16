@@ -48,6 +48,7 @@ export default function Add({
         open={Boolean(anchorEl)}
         anchorEl={anchorEl}
         onClose={handleClose}
+        sx={{ padding: 30 }}
       >
         <Typography variant='h6' style={{ padding: '8px 16px' }}>
           Create New
