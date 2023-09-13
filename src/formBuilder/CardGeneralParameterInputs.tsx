@@ -119,6 +119,7 @@ export default function CardGeneralParameterInputs({
                     onChange({
                       ...parameters,
                       name: value,
+                      title: value,
                     });
                   } else {
                     setKeyState(parameters.name);

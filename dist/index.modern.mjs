@@ -2249,7 +2249,8 @@ function CardGeneralParameterInputs({
       if (value === parameters.name || !(parameters.neighborNames && parameters.neighborNames.includes(value))) {
         setKeyError(null);
         onChange(_objectSpread2(_objectSpread2({}, parameters), {}, {
-          name: value
+          name: value,
+          title: value
         }));
       } else {
         setKeyState(parameters.name);
