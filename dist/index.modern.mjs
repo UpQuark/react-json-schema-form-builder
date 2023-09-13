@@ -2227,13 +2227,12 @@ function CardGeneralParameterInputs({
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: 'card-entry-row'
   }, showObjectNameInput && /*#__PURE__*/React.createElement("div", {
-    className: 'card-entry'
+    className: 'card-entry form-field-name'
   }, /*#__PURE__*/React.createElement("h5", null, `${objectNameLabel} `, /*#__PURE__*/React.createElement(Example, {
     text: mods && mods.tooltipDescriptions && typeof mods.tooltipDescriptions.cardObjectName === 'string' ? mods.tooltipDescriptions.cardObjectName : 'The back-end name of the object',
     id: `${elementId}_nameinfo`,
     type: 'help'
   })), /*#__PURE__*/React.createElement(FormGroup, null, /*#__PURE__*/React.createElement(Input, {
-    class: `form-field-name`,
     invalid: keyError !== null,
     value: titleState || '',
     placeholder: 'Label',

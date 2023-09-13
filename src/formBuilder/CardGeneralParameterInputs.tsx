@@ -79,7 +79,7 @@ export default function CardGeneralParameterInputs({
     <React.Fragment>
       <div className='card-entry-row'>
         {showObjectNameInput && (
-          <div className='card-entry'>
+          <div className='card-entry form-field-name'>
             <h5>
               {`${objectNameLabel} `}
               <Tooltip
@@ -97,7 +97,6 @@ export default function CardGeneralParameterInputs({
 
             <FormGroup>
               <Input
-                class={`form-field-name`}
                 invalid={keyError !== null}
                 value={titleState || ''}
                 placeholder='Label'
