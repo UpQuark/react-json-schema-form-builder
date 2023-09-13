@@ -99,9 +99,12 @@ export default function CardGeneralParameterInputs({
               <Input
                 invalid={keyError !== null}
                 value={keyState || ''}
-                placeholder='Key'
+                placeholder='Label'
                 type='text'
-                onChange={(ev) => setKeyState(ev.target.value)}
+                onChange={(ev) => {
+                  setKeyState(ev.target.value);
+                  setTitleState(ev.target.value);
+                }}
                 onBlur={(ev) => {
                   const { value } = ev.target;
                   if (
@@ -128,36 +131,6 @@ export default function CardGeneralParameterInputs({
             </FormGroup>
           </div>
         )}
-        <div
-          className={`card-entry ${
-            parameters.$ref === undefined ? '' : 'disabled-input'
-          }`}
-        >
-          <h5>
-            {`${displayNameLabel} `}
-            <Tooltip
-              text={
-                mods &&
-                mods.tooltipDescriptions &&
-                typeof mods.tooltipDescriptions.cardDisplayName === 'string'
-                  ? mods.tooltipDescriptions.cardDisplayName
-                  : 'The user-facing name of this object'
-              }
-              id={`${elementId}-titleinfo`}
-              type='help'
-            />
-          </h5>
-          <Input
-            value={titleState || ''}
-            placeholder='Title'
-            type='text'
-            onChange={(ev) => setTitleState(ev.target.value)}
-            onBlur={(ev) => {
-              onChange({ ...parameters, title: ev.target.value });
-            }}
-            className='card-text'
-          />
-        </div>
       </div>
       <div className='card-entry-row'>
         <div
