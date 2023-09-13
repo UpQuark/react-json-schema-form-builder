@@ -2256,12 +2256,12 @@ function CardGeneralParameterInputs(_ref) {
     _ref$showObjectNameIn = _ref.showObjectNameInput,
     showObjectNameInput = _ref$showObjectNameIn === void 0 ? true : _ref$showObjectNameIn;
   var _React$useState = React__default["default"].useState(parameters.name),
+    keyState = _React$useState[0],
     setKeyState = _React$useState[1];
   var _React$useState2 = React__default["default"].useState(null),
     keyError = _React$useState2[0],
     setKeyError = _React$useState2[1];
   var _React$useState3 = React__default["default"].useState(parameters.title),
-    titleState = _React$useState3[0],
     setTitleState = _React$useState3[1];
   var _React$useState4 = React__default["default"].useState(parameters.description),
     descriptionState = _React$useState4[0],
@@ -2302,10 +2302,11 @@ function CardGeneralParameterInputs(_ref) {
     type: 'help'
   })), /*#__PURE__*/React__default["default"].createElement(reactstrap.FormGroup, null, /*#__PURE__*/React__default["default"].createElement(reactstrap.Input, {
     invalid: keyError !== null,
-    value: titleState || '',
+    value: keyState || '',
     placeholder: 'Label',
     type: 'text',
     onChange: function onChange(ev) {
+      debugger;
       setKeyState(ev.target.value);
       setTitleState(ev.target.value);
     },

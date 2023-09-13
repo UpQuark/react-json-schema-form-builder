@@ -2234,10 +2234,11 @@ function CardGeneralParameterInputs({
     type: 'help'
   })), /*#__PURE__*/React.createElement(FormGroup, null, /*#__PURE__*/React.createElement(Input, {
     invalid: keyError !== null,
-    value: titleState || '',
+    value: keyState || '',
     placeholder: 'Label',
     type: 'text',
     onChange: ev => {
+      debugger;
       setKeyState(ev.target.value);
       setTitleState(ev.target.value);
     },

@@ -98,10 +98,11 @@ export default function CardGeneralParameterInputs({
             <FormGroup>
               <Input
                 invalid={keyError !== null}
-                value={titleState || ''}
+                value={keyState || ''}
                 placeholder='Label'
                 type='text'
                 onChange={(ev) => {
+                  debugger;
                   setKeyState(ev.target.value);
                   setTitleState(ev.target.value);
                 }}
