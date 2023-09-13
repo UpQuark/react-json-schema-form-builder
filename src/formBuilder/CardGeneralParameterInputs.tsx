@@ -53,7 +53,7 @@ export default function CardGeneralParameterInputs({
       : defaultLabel;
   };
 
-  const objectNameLabel = fetchLabel('objectNameLabel', 'Object Name');
+  const objectNameLabel = fetchLabel('objectNameLabel', 'Label');
   const displayNameLabel = fetchLabel('displayNameLabel', 'Display Name');
   const descriptionLabel = fetchLabel('descriptionLabel', 'Description');
   const inputTypeLabel = fetchLabel('inputTypeLabel', 'Input Type');
@@ -97,8 +97,9 @@ export default function CardGeneralParameterInputs({
 
             <FormGroup>
               <Input
+                class={`form-field-name`}
                 invalid={keyError !== null}
-                value={keyState || ''}
+                value={titleState || ''}
                 placeholder='Label'
                 type='text'
                 onChange={(ev) => {
@@ -121,6 +122,7 @@ export default function CardGeneralParameterInputs({
                     });
                   } else {
                     setKeyState(parameters.name);
+                    setTitleState(parameters.name);
                     setKeyError(`"${value}" is already in use.`);
                     onChange({ ...parameters });
                   }

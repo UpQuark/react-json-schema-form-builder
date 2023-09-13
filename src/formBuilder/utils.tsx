@@ -950,7 +950,7 @@ export function updateSchemas(
   onChange(newSchema, newUiSchema);
 }
 
-export const DEFAULT_INPUT_NAME = 'newInput';
+export const DEFAULT_INPUT_NAME = 'New Input';
 
 // ensure that each added block has a unique name
 function getIdFromElementsBlock(elements: Array<ElementProps>) {

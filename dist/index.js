@@ -924,7 +924,7 @@ function updateSchemas(elementArr, parameters) {
   newSchema.type = 'object';
   onChange(newSchema, newUiSchema);
 }
-var DEFAULT_INPUT_NAME = 'newInput';
+var DEFAULT_INPUT_NAME = 'New Input';
 // ensure that each added block has a unique name
 function getIdFromElementsBlock(elements) {
   var names = elements.map(function (element) {
@@ -2256,12 +2256,12 @@ function CardGeneralParameterInputs(_ref) {
     _ref$showObjectNameIn = _ref.showObjectNameInput,
     showObjectNameInput = _ref$showObjectNameIn === void 0 ? true : _ref$showObjectNameIn;
   var _React$useState = React__default["default"].useState(parameters.name),
-    keyState = _React$useState[0],
     setKeyState = _React$useState[1];
   var _React$useState2 = React__default["default"].useState(null),
     keyError = _React$useState2[0],
     setKeyError = _React$useState2[1];
   var _React$useState3 = React__default["default"].useState(parameters.title),
+    titleState = _React$useState3[0],
     setTitleState = _React$useState3[1];
   var _React$useState4 = React__default["default"].useState(parameters.description),
     descriptionState = _React$useState4[0],
@@ -2272,7 +2272,7 @@ function CardGeneralParameterInputs(_ref) {
   var fetchLabel = function fetchLabel(labelName, defaultLabel) {
     return mods && mods.labels && typeof mods.labels[labelName] === 'string' ? mods.labels[labelName] : defaultLabel;
   };
-  var objectNameLabel = fetchLabel('objectNameLabel', 'Object Name');
+  var objectNameLabel = fetchLabel('objectNameLabel', 'Label');
   var descriptionLabel = fetchLabel('descriptionLabel', 'Description');
   var inputTypeLabel = fetchLabel('inputTypeLabel', 'Input Type');
   var availableInputTypes = function availableInputTypes() {
@@ -2301,8 +2301,9 @@ function CardGeneralParameterInputs(_ref) {
     id: elementId + "_nameinfo",
     type: 'help'
   })), /*#__PURE__*/React__default["default"].createElement(reactstrap.FormGroup, null, /*#__PURE__*/React__default["default"].createElement(reactstrap.Input, {
+    "class": "form-field-name",
     invalid: keyError !== null,
-    value: keyState || '',
+    value: titleState || '',
     placeholder: 'Label',
     type: 'text',
     onChange: function onChange(ev) {
@@ -2318,6 +2319,7 @@ function CardGeneralParameterInputs(_ref) {
         }));
       } else {
         setKeyState(parameters.name);
+        setTitleState(parameters.name);
         setKeyError("\"" + value + "\" is already in use.");
         _onChange(_objectSpread2({}, parameters));
       }

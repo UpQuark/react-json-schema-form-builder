@@ -90,7 +90,7 @@ export declare function updateSchemas(elementArr: ElementProps[], parameters: {
         [key: string]: any;
     };
 }): void;
-export declare const DEFAULT_INPUT_NAME = "newInput";
+export declare const DEFAULT_INPUT_NAME = "New Input";
 export declare function addCardObj(parameters: AddFormObjectParametersType): void;
 export declare function addSectionObj(parameters: AddFormObjectParametersType): void;
 export declare function generateElementComponentsFromSchemas(parameters: {

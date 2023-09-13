@@ -912,7 +912,7 @@ function updateSchemas(elementArr, parameters) {
   newSchema.type = 'object';
   onChange(newSchema, newUiSchema);
 }
-const DEFAULT_INPUT_NAME = 'newInput';
+const DEFAULT_INPUT_NAME = 'New Input';
 // ensure that each added block has a unique name
 function getIdFromElementsBlock(elements) {
   const names = elements.map(element => element.name);
@@ -2210,7 +2210,7 @@ function CardGeneralParameterInputs({
   const fetchLabel = (labelName, defaultLabel) => {
     return mods && mods.labels && typeof mods.labels[labelName] === 'string' ? mods.labels[labelName] : defaultLabel;
   };
-  const objectNameLabel = fetchLabel('objectNameLabel', 'Object Name');
+  const objectNameLabel = fetchLabel('objectNameLabel', 'Label');
   const descriptionLabel = fetchLabel('descriptionLabel', 'Description');
   const inputTypeLabel = fetchLabel('inputTypeLabel', 'Input Type');
   const availableInputTypes = () => {
@@ -2233,8 +2233,9 @@ function CardGeneralParameterInputs({
     id: `${elementId}_nameinfo`,
     type: 'help'
   })), /*#__PURE__*/React.createElement(FormGroup, null, /*#__PURE__*/React.createElement(Input, {
+    class: `form-field-name`,
     invalid: keyError !== null,
-    value: keyState || '',
+    value: titleState || '',
     placeholder: 'Label',
     type: 'text',
     onChange: ev => {
@@ -2252,6 +2253,7 @@ function CardGeneralParameterInputs({
         }));
       } else {
         setKeyState(parameters.name);
+        setTitleState(parameters.name);
         setKeyError(`"${value}" is already in use.`);
         onChange(_objectSpread2({}, parameters));
       }
