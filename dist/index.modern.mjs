@@ -2211,7 +2211,6 @@ function CardGeneralParameterInputs({
     return mods && mods.labels && typeof mods.labels[labelName] === 'string' ? mods.labels[labelName] : defaultLabel;
   };
   const objectNameLabel = fetchLabel('objectNameLabel', 'Object Name');
-  const displayNameLabel = fetchLabel('displayNameLabel', 'Display Name');
   const descriptionLabel = fetchLabel('descriptionLabel', 'Description');
   const inputTypeLabel = fetchLabel('inputTypeLabel', 'Input Type');
   const availableInputTypes = () => {
@@ -2236,9 +2235,12 @@ function CardGeneralParameterInputs({
   })), /*#__PURE__*/React.createElement(FormGroup, null, /*#__PURE__*/React.createElement(Input, {
     invalid: keyError !== null,
     value: keyState || '',
-    placeholder: 'Key',
+    placeholder: 'Label',
     type: 'text',
-    onChange: ev => setKeyState(ev.target.value),
+    onChange: ev => {
+      setKeyState(ev.target.value);
+      setTitleState(ev.target.value);
+    },
     onBlur: ev => {
       const {
         value
@@ -2255,24 +2257,7 @@ function CardGeneralParameterInputs({
       }
     },
     className: 'card-text'
-  }), /*#__PURE__*/React.createElement(FormFeedback, null, keyError))), /*#__PURE__*/React.createElement("div", {
-    className: `card-entry ${parameters.$ref === undefined ? '' : 'disabled-input'}`
-  }, /*#__PURE__*/React.createElement("h5", null, `${displayNameLabel} `, /*#__PURE__*/React.createElement(Example, {
-    text: mods && mods.tooltipDescriptions && typeof mods.tooltipDescriptions.cardDisplayName === 'string' ? mods.tooltipDescriptions.cardDisplayName : 'The user-facing name of this object',
-    id: `${elementId}-titleinfo`,
-    type: 'help'
-  })), /*#__PURE__*/React.createElement(Input, {
-    value: titleState || '',
-    placeholder: 'Title',
-    type: 'text',
-    onChange: ev => setTitleState(ev.target.value),
-    onBlur: ev => {
-      onChange(_objectSpread2(_objectSpread2({}, parameters), {}, {
-        title: ev.target.value
-      }));
-    },
-    className: 'card-text'
-  }))), /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement(FormFeedback, null, keyError)))), /*#__PURE__*/React.createElement("div", {
     className: 'card-entry-row'
   }, /*#__PURE__*/React.createElement("div", {
     className: `card-entry ${parameters.$ref ? 'disabled-input' : ''}`

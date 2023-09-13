@@ -2262,7 +2262,6 @@ function CardGeneralParameterInputs(_ref) {
     keyError = _React$useState2[0],
     setKeyError = _React$useState2[1];
   var _React$useState3 = React__default["default"].useState(parameters.title),
-    titleState = _React$useState3[0],
     setTitleState = _React$useState3[1];
   var _React$useState4 = React__default["default"].useState(parameters.description),
     descriptionState = _React$useState4[0],
@@ -2274,7 +2273,6 @@ function CardGeneralParameterInputs(_ref) {
     return mods && mods.labels && typeof mods.labels[labelName] === 'string' ? mods.labels[labelName] : defaultLabel;
   };
   var objectNameLabel = fetchLabel('objectNameLabel', 'Object Name');
-  var displayNameLabel = fetchLabel('displayNameLabel', 'Display Name');
   var descriptionLabel = fetchLabel('descriptionLabel', 'Description');
   var inputTypeLabel = fetchLabel('inputTypeLabel', 'Input Type');
   var availableInputTypes = function availableInputTypes() {
@@ -2305,10 +2303,11 @@ function CardGeneralParameterInputs(_ref) {
   })), /*#__PURE__*/React__default["default"].createElement(reactstrap.FormGroup, null, /*#__PURE__*/React__default["default"].createElement(reactstrap.Input, {
     invalid: keyError !== null,
     value: keyState || '',
-    placeholder: 'Key',
+    placeholder: 'Label',
     type: 'text',
     onChange: function onChange(ev) {
-      return setKeyState(ev.target.value);
+      setKeyState(ev.target.value);
+      setTitleState(ev.target.value);
     },
     onBlur: function onBlur(ev) {
       var value = ev.target.value;
@@ -2324,26 +2323,7 @@ function CardGeneralParameterInputs(_ref) {
       }
     },
     className: 'card-text'
-  }), /*#__PURE__*/React__default["default"].createElement(reactstrap.FormFeedback, null, keyError))), /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "card-entry " + (parameters.$ref === undefined ? '' : 'disabled-input')
-  }, /*#__PURE__*/React__default["default"].createElement("h5", null, displayNameLabel + " ", /*#__PURE__*/React__default["default"].createElement(Example, {
-    text: mods && mods.tooltipDescriptions && typeof mods.tooltipDescriptions.cardDisplayName === 'string' ? mods.tooltipDescriptions.cardDisplayName : 'The user-facing name of this object',
-    id: elementId + "-titleinfo",
-    type: 'help'
-  })), /*#__PURE__*/React__default["default"].createElement(reactstrap.Input, {
-    value: titleState || '',
-    placeholder: 'Title',
-    type: 'text',
-    onChange: function onChange(ev) {
-      return setTitleState(ev.target.value);
-    },
-    onBlur: function onBlur(ev) {
-      _onChange(_objectSpread2(_objectSpread2({}, parameters), {}, {
-        title: ev.target.value
-      }));
-    },
-    className: 'card-text'
-  }))), /*#__PURE__*/React__default["default"].createElement("div", {
+  }), /*#__PURE__*/React__default["default"].createElement(reactstrap.FormFeedback, null, keyError)))), /*#__PURE__*/React__default["default"].createElement("div", {
     className: 'card-entry-row'
   }, /*#__PURE__*/React__default["default"].createElement("div", {
     className: "card-entry " + (parameters.$ref ? 'disabled-input' : '')
