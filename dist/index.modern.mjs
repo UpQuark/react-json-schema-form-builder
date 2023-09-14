@@ -2998,7 +2998,7 @@ function Section({
     className: 'section-entry form-section-name',
     "data-test": 'section-object-name'
   }, /*#__PURE__*/React.createElement("h5", null, "Section Name", ' ', /*#__PURE__*/React.createElement(Example, {
-    text: mods && mods.tooltipDescriptions && mods.tooltipDescriptions && typeof mods.tooltipDescriptions.cardSectionObjectName === 'string' ? mods.tooltipDescriptions.cardSectionObjectName : 'The key to the object that will represent this form section.',
+    text: mods && mods.tooltipDescriptions && mods.tooltipDescriptions && typeof mods.tooltipDescriptions.cardSectionObjectName === 'string' ? mods.tooltipDescriptions.cardSectionObjectName : 'The title of this form section',
     id: `${elementId}_nameinfo`,
     type: 'help'
   })), /*#__PURE__*/React.createElement(FormGroup, null, /*#__PURE__*/React.createElement(Input, {
