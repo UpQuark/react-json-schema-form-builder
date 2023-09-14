@@ -2995,9 +2995,9 @@ function Section({
     },
     className: 'section-select'
   })) : '', /*#__PURE__*/React.createElement("div", {
-    className: 'section-entry',
+    className: 'section-entry form-section-name',
     "data-test": 'section-object-name'
-  }, /*#__PURE__*/React.createElement("h5", null, "Section Object Name", ' ', /*#__PURE__*/React.createElement(Example, {
+  }, /*#__PURE__*/React.createElement("h5", null, "Section Name", ' ', /*#__PURE__*/React.createElement(Example, {
     text: mods && mods.tooltipDescriptions && mods.tooltipDescriptions && typeof mods.tooltipDescriptions.cardSectionObjectName === 'string' ? mods.tooltipDescriptions.cardSectionObjectName : 'The key to the object that will represent this form section.',
     id: `${elementId}_nameinfo`,
     type: 'help'
@@ -3006,7 +3006,10 @@ function Section({
     value: keyName || '',
     placeholder: 'Key',
     type: 'text',
-    onChange: ev => setKeyName(ev.target.value),
+    onChange: ev => {
+      setKeyName(ev.target.value);
+      schemaData.title = ev.target.value;
+    },
     onBlur: ev => {
       const {
         value
@@ -3016,6 +3019,7 @@ function Section({
         onNameChange(value);
       } else {
         setKeyName(name);
+        schemaData.title = name;
         setKeyError(`"${value}" is already in use.`);
         onNameChange(name);
       }
@@ -3023,21 +3027,6 @@ function Section({
     className: 'card-text',
     readOnly: hideKey
   }), /*#__PURE__*/React.createElement(FormFeedback, null, keyError))), /*#__PURE__*/React.createElement("div", {
-    className: 'section-entry',
-    "data-test": 'section-display-name'
-  }, /*#__PURE__*/React.createElement("h5", null, "Section Display Name", ' ', /*#__PURE__*/React.createElement(Example, {
-    text: mods && mods.tooltipDescriptions && mods.tooltipDescriptions && typeof mods.tooltipDescriptions.cardSectionDisplayName === 'string' ? mods.tooltipDescriptions.cardSectionDisplayName : 'The name of the form section that will be shown to users of the form.',
-    id: `${elementId}_titleinfo`,
-    type: 'help'
-  })), /*#__PURE__*/React.createElement(Input, {
-    value: schemaData.title || '',
-    placeholder: 'Title',
-    type: 'text',
-    onChange: ev => onChange(_objectSpread2(_objectSpread2({}, schema), {}, {
-      title: ev.target.value
-    }), uischema),
-    className: 'card-text'
-  })), /*#__PURE__*/React.createElement("div", {
     className: 'section-entry',
     "data-test": 'section-description'
   }, /*#__PURE__*/React.createElement("h5", null, "Section Description", ' ', /*#__PURE__*/React.createElement(Example, {

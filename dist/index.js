@@ -3124,9 +3124,9 @@ function Section(_ref) {
     },
     className: 'section-select'
   })) : '', /*#__PURE__*/React__default["default"].createElement("div", {
-    className: 'section-entry',
+    className: 'section-entry form-section-name',
     "data-test": 'section-object-name'
-  }, /*#__PURE__*/React__default["default"].createElement("h5", null, "Section Object Name", ' ', /*#__PURE__*/React__default["default"].createElement(Example, {
+  }, /*#__PURE__*/React__default["default"].createElement("h5", null, "Section Name", ' ', /*#__PURE__*/React__default["default"].createElement(Example, {
     text: mods && mods.tooltipDescriptions && mods.tooltipDescriptions && typeof mods.tooltipDescriptions.cardSectionObjectName === 'string' ? mods.tooltipDescriptions.cardSectionObjectName : 'The key to the object that will represent this form section.',
     id: elementId + "_nameinfo",
     type: 'help'
@@ -3136,7 +3136,8 @@ function Section(_ref) {
     placeholder: 'Key',
     type: 'text',
     onChange: function onChange(ev) {
-      return setKeyName(ev.target.value);
+      setKeyName(ev.target.value);
+      schemaData.title = ev.target.value;
     },
     onBlur: function onBlur(ev) {
       var value = ev.target.value;
@@ -3145,6 +3146,7 @@ function Section(_ref) {
         onNameChange(value);
       } else {
         setKeyName(name);
+        schemaData.title = name;
         setKeyError("\"" + value + "\" is already in use.");
         onNameChange(name);
       }
@@ -3152,23 +3154,6 @@ function Section(_ref) {
     className: 'card-text',
     readOnly: hideKey
   }), /*#__PURE__*/React__default["default"].createElement(reactstrap.FormFeedback, null, keyError))), /*#__PURE__*/React__default["default"].createElement("div", {
-    className: 'section-entry',
-    "data-test": 'section-display-name'
-  }, /*#__PURE__*/React__default["default"].createElement("h5", null, "Section Display Name", ' ', /*#__PURE__*/React__default["default"].createElement(Example, {
-    text: mods && mods.tooltipDescriptions && mods.tooltipDescriptions && typeof mods.tooltipDescriptions.cardSectionDisplayName === 'string' ? mods.tooltipDescriptions.cardSectionDisplayName : 'The name of the form section that will be shown to users of the form.',
-    id: elementId + "_titleinfo",
-    type: 'help'
-  })), /*#__PURE__*/React__default["default"].createElement(reactstrap.Input, {
-    value: schemaData.title || '',
-    placeholder: 'Title',
-    type: 'text',
-    onChange: function onChange(ev) {
-      return _onChange(_objectSpread2(_objectSpread2({}, schema), {}, {
-        title: ev.target.value
-      }), uischema);
-    },
-    className: 'card-text'
-  })), /*#__PURE__*/React__default["default"].createElement("div", {
     className: 'section-entry',
     "data-test": 'section-description'
   }, /*#__PURE__*/React__default["default"].createElement("h5", null, "Section Description", ' ', /*#__PURE__*/React__default["default"].createElement(Example, {
