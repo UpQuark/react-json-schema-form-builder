@@ -225,9 +225,12 @@ export default function Section({
             ) : (
               ''
             )}
-            <div className='section-entry' data-test='section-object-name'>
+            <div
+              className='section-entry form-section-name'
+              data-test='section-object-name'
+            >
               <h5>
-                Section Object Name{' '}
+                Section Name{' '}
                 <Tooltip
                   text={
                     mods &&
@@ -248,7 +251,10 @@ export default function Section({
                   value={keyName || ''}
                   placeholder='Key'
                   type='text'
-                  onChange={(ev) => setKeyName(ev.target.value)}
+                  onChange={(ev) => {
+                    setKeyName(ev.target.value);
+                    schemaData.title = ev.target.value;
+                  }}
                   onBlur={(ev) => {
                     const { value } = ev.target;
                     if (
@@ -259,6 +265,7 @@ export default function Section({
                       onNameChange(value);
                     } else {
                       setKeyName(name);
+                      schemaData.title = name;
                       setKeyError(`"${value}" is already in use.`);
                       onNameChange(name);
                     }
@@ -268,39 +275,6 @@ export default function Section({
                 />
                 <FormFeedback>{keyError}</FormFeedback>
               </FormGroup>
-            </div>
-            <div className='section-entry' data-test='section-display-name'>
-              <h5>
-                Section Display Name{' '}
-                <Tooltip
-                  text={
-                    mods &&
-                    mods.tooltipDescriptions &&
-                    mods.tooltipDescriptions &&
-                    typeof mods.tooltipDescriptions.cardSectionDisplayName ===
-                      'string'
-                      ? mods.tooltipDescriptions.cardSectionDisplayName
-                      : 'The name of the form section that will be shown to users of the form.'
-                  }
-                  id={`${elementId}_titleinfo`}
-                  type='help'
-                />
-              </h5>
-              <Input
-                value={schemaData.title || ''}
-                placeholder='Title'
-                type='text'
-                onChange={(ev) =>
-                  onChange(
-                    {
-                      ...schema,
-                      title: ev.target.value,
-                    },
-                    uischema,
-                  )
-                }
-                className='card-text'
-              />
             </div>
             <div className='section-entry' data-test='section-description'>
               <h5>
