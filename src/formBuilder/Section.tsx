@@ -239,7 +239,7 @@ export default function Section({
                     typeof mods.tooltipDescriptions.cardSectionObjectName ===
                       'string'
                       ? mods.tooltipDescriptions.cardSectionObjectName
-                      : 'The key to the object that will represent this form section.'
+                      : 'The title of this form section'
                   }
                   id={`${elementId}_nameinfo`}
                   type='help'
