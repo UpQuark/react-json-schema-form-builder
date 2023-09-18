@@ -2238,7 +2238,6 @@ function CardGeneralParameterInputs({
     placeholder: 'Label',
     type: 'text',
     onChange: ev => {
-      debugger;
       setKeyState(ev.target.value);
       setTitleState(ev.target.value);
     },

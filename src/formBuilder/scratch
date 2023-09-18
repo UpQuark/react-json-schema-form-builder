@@ -1,0 +1,34 @@
+<FormGroup>
+              <Input
+                invalid={keyError !== null}
+                value={keyState || ''}
+                placeholder='Label'
+                type='text'
+                onChange={(ev) => {
+                  setKeyState(ev.target.value);
+                  setTitleState(ev.target.value);
+                }}
+                onBlur={(ev) => {
+                  const { value } = ev.target;
+                  if (
+                    value === parameters.name ||
+                    !(
+                      parameters.neighborNames &&
+                      parameters.neighborNames.includes(value)
+                    )
+                  ) {
+                    setKeyError(null);
+                    onChange({
+                      ...parameters,
+                      name: value,
+                    });
+                  } else {
+                    setKeyState(parameters.name);
+                    setKeyError(`"${value}" is already in use.`);
+                    onChange({ ...parameters });
+                  }
+                }}
+                className='card-text'
+              />
+              <FormFeedback>{keyError}</FormFeedback>
+            </FormGroup>
